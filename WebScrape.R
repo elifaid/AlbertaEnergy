@@ -1,7 +1,7 @@
 library(tidyverse)
 library(lubridate)
 library(rvest)
-library(taskscheduleR)
+
 Create_table <-function (table_num,Energy_type){
   table<-tables[[table_num]]
   names(table) <- as.character(table[1,])
@@ -36,7 +36,7 @@ Last_Update<-sub(".*: ", "",tables[[5]]$X1[2])
 Date<-mdy(substr(Last_Update, 1, 12))
 Time<-substr(Last_Update, nchar(Last_Update) - 4, nchar(Last_Update))
   
-Gas<-tables[[13]] # Doesn;t work in the function because it has 3 lines at the top, I think
+Gas<-tables[[13]] # Doesn';'t work in the function because it has 3 lines at the top, I think
 names(Gas) <- as.character(Gas[2,])
 Gas <- Gas[3:nrow(Gas),]
 Gas$MC<-as.numeric(Gas$MC)
@@ -64,5 +64,5 @@ if( file.exists("Interchange.csv")){
   write_excel_csv(Interchange,"Interchange.csv",col_names = FALSE,append = TRUE)
 } else write_excel_csv(Interchange,"Interchange.csv")
 
-    Sys.sleep(120) #basically sleep for whatever is left of the second
+    Sys.sleep(120) #basically sleep for 2 minutes
 }
